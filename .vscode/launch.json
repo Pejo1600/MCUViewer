@@ -5,7 +5,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "(gdb) Launch",
+            "name": "(gdb) Launch (Linux)",
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/build/MCUViewer",
@@ -15,7 +15,7 @@
             "environment": [],
             "externalConsole": false,
             "MIMode": "gdb",
-            "miDebuggerPath": "C:/msys64/mingw64/bin/gdb.exe",
+            "miDebuggerPath": "/usr/bin/gdb",
             "setupCommands": [
                 {
                     "description": "Enable pretty-printing for gdb",
@@ -27,20 +27,21 @@
                     "text": "-gdb-set disassembly-flavor intel",
                     "ignoreFailures": true
                 }
-            ]
+            ],
+            "preLaunchTask": "CMake: Build"
         },
         {
-            "name": "(gdb) tests debug",
+            "name": "(gdb) Tests Debug (Linux)",
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/build_test/test/MCUViewer_test",
             "args": [],
             "stopAtEntry": false,
-            "cwd": "${workspaceFolder}/build",
+            "cwd": "${workspaceFolder}/build_test",
             "environment": [],
             "externalConsole": false,
             "MIMode": "gdb",
-            "miDebuggerPath": "C:/msys64/mingw64/bin/gdb.exe",
+            "miDebuggerPath": "/usr/bin/gdb",
             "setupCommands": [
                 {
                     "description": "Enable pretty-printing for gdb",
@@ -52,67 +53,24 @@
                     "text": "-gdb-set disassembly-flavor intel",
                     "ignoreFailures": true
                 }
-            ]
-        },
-        {
-            "name": "Remote Debug",
-            "type": "cppdbg",
-            "request": "launch",
-            "program": "${workspaceFolder}/build/MCUViewer",
-            "stopAtEntry": false,
-            "cwd": "${workspaceFolder}/build",
-            "environment": [],
-            "externalConsole": true,
-            "MIMode": "gdb",
-            "miDebuggerPath": "C:/msys64/mingw64/bin/gdb.exe",
-            "miDebuggerServerAddress": "localhost:2000",
-            "setupCommands": [
-                {
-                    "text": "-enable-pretty-printing",
-                    "ignoreFailures": true
-                }
             ],
-            "preLaunchTask": "Run application with gdbserver"
+            "preLaunchTask": "CMake: Build Tests"
         },
         {
-            "name": "Remote Debug Attach",
+            "name": "Attach to Process (pick)",
             "type": "cppdbg",
             "request": "attach",
             "program": "${workspaceFolder}/build/MCUViewer",
             "processId": "${command:pickProcess}",
             "MIMode": "gdb",
-            "useExtendedRemote": true,
-            "miDebuggerPath": "C:/msys64/mingw64/bin/gdb.exe",
-            "miDebuggerServerAddress": "localhost:2000",
+            "miDebuggerPath": "/usr/bin/gdb",
             "setupCommands": [
                 {
                     "text": "-enable-pretty-printing",
                     "ignoreFailures": true
                 }
-            ],
-            "logging": {
-                "engineLogging": true,
-            }
+            ]
         },
-        {
-            "name": "Remote Debug Tests",
-            "type": "cppdbg",
-            "request": "launch",
-            "program": "${workspaceFolder}/build_test/test/MCUViewer_test",
-            "stopAtEntry": false,
-            "cwd": "${workspaceFolder}/build",
-            "environment": [],
-            "externalConsole": true,
-            "MIMode": "gdb",
-            "miDebuggerPath": "C:/msys64/mingw64/bin/gdb.exe",
-            "miDebuggerServerAddress": "localhost:2000",
-            "setupCommands": [
-                {
-                    "text": "-enable-pretty-printing",
-                    "ignoreFailures": true
-                }
-            ],
-            "preLaunchTask": "Run application with gdbserver"
-        },
+        
     ]
 }
